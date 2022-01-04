@@ -4,9 +4,34 @@
               useAppConfig="0" addUsingNamespaceToJuceHeader="0" displaySplashScreen="1"
               jucerFormatVersion="1">
   <MAINGROUP id="xMBhh3" name="KadenzeDelayChorus">
+    <GROUP id="{0CA7289B-C586-030D-48BC-7E9F81212D48}" name="Panels">
+      <FILE id="KbVf1S" name="KAPCenterPanel.cpp" compile="1" resource="0"
+            file="Source/KAPCenterPanel.cpp"/>
+      <FILE id="bhNOng" name="KAPCenterPanel.h" compile="0" resource="0"
+            file="Source/KAPCenterPanel.h"/>
+      <FILE id="h4gC9c" name="KAPCenterPanelMenuBar.cpp" compile="1" resource="0"
+            file="Source/KAPCenterPanelMenuBar.cpp"/>
+      <FILE id="h16VHF" name="KAPCenterPanelMenuBar.h" compile="0" resource="0"
+            file="Source/KAPCenterPanelMenuBar.h"/>
+      <FILE id="VHh8IF" name="KAPFxPanel.cpp" compile="1" resource="0" file="Source/KAPFxPanel.cpp"/>
+      <FILE id="g00ZYq" name="KAPFxPanel.h" compile="0" resource="0" file="Source/KAPFxPanel.h"/>
+      <FILE id="SFivvS" name="KAPGainPanel.cpp" compile="1" resource="0"
+            file="Source/KAPGainPanel.cpp"/>
+      <FILE id="GZjo1w" name="KAPGainPanel.h" compile="0" resource="0" file="Source/KAPGainPanel.h"/>
+      <FILE id="hEstZs" name="KAPMainPanel.cpp" compile="1" resource="0"
+            file="Source/KAPMainPanel.cpp"/>
+      <FILE id="Cty5ro" name="KAPMainPanel.h" compile="0" resource="0" file="Source/KAPMainPanel.h"/>
+      <FILE id="Z4lIaf" name="KAPPanelBase.cpp" compile="1" resource="0"
+            file="Source/KAPPanelBase.cpp"/>
+      <FILE id="GxC7Ti" name="KAPPanelBase.h" compile="0" resource="0" file="Source/KAPPanelBase.h"/>
+      <FILE id="WehtdU" name="KAPTopPanel.cpp" compile="1" resource="0" file="Source/KAPTopPanel.cpp"/>
+      <FILE id="CNLGpS" name="KAPTopPanel.h" compile="0" resource="0" file="Source/KAPTopPanel.h"/>
+    </GROUP>
     <GROUP id="{C06F8D64-2B11-8A19-540C-072ECA82D1EA}" name="Helpers">
       <FILE id="ClhzCF" name="KAPAudioHelpers.h" compile="0" resource="0"
             file="Source/KAPAudioHelpers.h"/>
+      <FILE id="t29fnh" name="KAPInterfaceDefines.h" compile="0" resource="0"
+            file="Source/KAPInterfaceDefines.h"/>
     </GROUP>
     <GROUP id="{6CBE25C6-A862-A0EC-6E38-A75AEAC90410}" name="DSP">
       <FILE id="mXUmg5" name="KAPDelay.cpp" compile="1" resource="0" file="Source/KAPDelay.cpp"/>
