@@ -4,6 +4,22 @@
               useAppConfig="0" addUsingNamespaceToJuceHeader="0" displaySplashScreen="1"
               jucerFormatVersion="1">
   <MAINGROUP id="xMBhh3" name="KadenzeDelayChorus">
+    <GROUP id="{120A2339-963B-86A2-1631-6C278BDB986C}" name="Managers">
+      <FILE id="hAksdL" name="KAPPresetManager.cpp" compile="1" resource="0"
+            file="Source/KAPPresetManager.cpp"/>
+      <FILE id="X7ja4d" name="KAPPresetManager.h" compile="0" resource="0"
+            file="Source/KAPPresetManager.h"/>
+    </GROUP>
+    <GROUP id="{49F74E5E-0854-1DCB-D8A3-322FD42686AA}" name="Parameter Control">
+      <FILE id="teXIEH" name="KAPParameterComboBox.cpp" compile="1" resource="0"
+            file="Source/KAPParameterComboBox.cpp"/>
+      <FILE id="Zyf9YI" name="KAPParameterComboBox.h" compile="0" resource="0"
+            file="Source/KAPParameterComboBox.h"/>
+      <FILE id="NXi0o3" name="KAPParameterSlider.cpp" compile="1" resource="0"
+            file="Source/KAPParameterSlider.cpp"/>
+      <FILE id="MgqKxi" name="KAPParameterSlider.h" compile="0" resource="0"
+            file="Source/KAPParameterSlider.h"/>
+    </GROUP>
     <GROUP id="{0CA7289B-C586-030D-48BC-7E9F81212D48}" name="Panels">
       <FILE id="KbVf1S" name="KAPCenterPanel.cpp" compile="1" resource="0"
             file="Source/KAPCenterPanel.cpp"/>
@@ -30,8 +46,11 @@
     <GROUP id="{C06F8D64-2B11-8A19-540C-072ECA82D1EA}" name="Helpers">
       <FILE id="ClhzCF" name="KAPAudioHelpers.h" compile="0" resource="0"
             file="Source/KAPAudioHelpers.h"/>
+      <FILE id="Bkefhn" name="KAPHelperFunctions.h" compile="0" resource="0"
+            file="Source/KAPHelperFunctions.h"/>
       <FILE id="t29fnh" name="KAPInterfaceDefines.h" compile="0" resource="0"
             file="Source/KAPInterfaceDefines.h"/>
+      <FILE id="S8aL3l" name="KAPParameters.h" compile="0" resource="0" file="Source/KAPParameters.h"/>
     </GROUP>
     <GROUP id="{6CBE25C6-A862-A0EC-6E38-A75AEAC90410}" name="DSP">
       <FILE id="mXUmg5" name="KAPDelay.cpp" compile="1" resource="0" file="Source/KAPDelay.cpp"/>

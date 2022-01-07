@@ -12,6 +12,7 @@
 #include "KAPGain.h"
 #include "KAPDelay.h"
 #include "KAPLfo.h"
+#include "KAPPresetManager.h"
 
 //==============================================================================
 /**
@@ -56,12 +57,19 @@ public:
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
+    juce::AudioProcessorValueTreeState parameters;
+
 private:
 
     void initializeDSP();
-    std::unique_ptr<KAPGain> mGain[2];
+    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
+
+    std::unique_ptr<KAPGain> mInputGain[2];
+    std::unique_ptr<KAPGain> mOutputGain[2];
     std::unique_ptr<KAPDelay> mDelay[2];
     std::unique_ptr<KAPLfo> mLfo[2];
+
+    std::unique_ptr<KAPPresetManager> mPresetManager;
     
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (KadenzeDelayChorusAudioProcessor)

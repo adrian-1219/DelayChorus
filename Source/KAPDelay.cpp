@@ -41,6 +41,7 @@ void KAPDelay::process(float* inAudio,
                        float inTime,
                        float inFeedback,
                        float inWetDry,
+                       float inType,
                        float* inModulationBuffer,
                        float* outAudio,
                        int inNumSamplesToRender)
@@ -54,15 +55,22 @@ void KAPDelay::process(float* inAudio,
     const float feedbackMapped = juce::jmap(inFeedback, 0.0f, 1.0f, 0.0f, 0.95f);
 
     for (int i = 0; i < inNumSamplesToRender; i++) {
-        // Modulate delay time for chorus effect
-        const double delayTimeModulation = (inTime + (0.002 * inModulationBuffer[i]));
+        if ((int)inType == kKAPDelayType_Delay) {
+            // Parameter smoothing for delay time
+            // Smoothing is at sample level because it is being modulated very quickly
+            mTimeSmoothed = mTimeSmoothed - kParameterSmoothingCoeff_Fine * (mTimeSmoothed - inTime);
+        }
+        else {
+            // Modulate delay time for chorus effect
+            const double delayTimeModulation = (0.003 + (0.002 * inModulationBuffer[i]));
 
-        // Parameter smoothing for delay time
-        // Smoothing is at sample level because it is being modulated very quickly
-        mTimeSmoothed = mTimeSmoothed - kParameterSmoothingCoeff_Fine * (mTimeSmoothed - (delayTimeModulation));
+            // Parameter smoothing for delay time
+            // Smoothing is at sample level because it is being modulated very quickly
+            mTimeSmoothed = mTimeSmoothed - kParameterSmoothingCoeff_Fine * (mTimeSmoothed - (delayTimeModulation));
+        }
 
         // Calculate delay time in samples
-        const double delayTimeInSamples = (mTimeSmoothed * delayTimeModulation * mSampleRate);
+        const double delayTimeInSamples = (mTimeSmoothed * mSampleRate);
 
         // Calculate interpolated sample
         const double sample = getInterpolatedSample(delayTimeInSamples); 

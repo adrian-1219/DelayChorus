@@ -8,11 +8,13 @@
 
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
+#include "KAPParameters.h"
 
 //==============================================================================
 KadenzeDelayChorusAudioProcessor::KadenzeDelayChorusAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
-     : AudioProcessor (BusesProperties()
+     : parameters(*this, nullptr, "PARAMETERS", createParameterLayout()),
+    AudioProcessor(BusesProperties()
                      #if ! JucePlugin_IsMidiEffect
                       #if ! JucePlugin_IsSynth
                        .withInput  ("Input",  juce::AudioChannelSet::stereo(), true)
@@ -23,6 +25,8 @@ KadenzeDelayChorusAudioProcessor::KadenzeDelayChorusAudioProcessor()
 #endif
 {
     initializeDSP();
+
+    mPresetManager = std::make_unique<KAPPresetManager>(this);
 }
 
 KadenzeDelayChorusAudioProcessor::~KadenzeDelayChorusAudioProcessor()
@@ -163,31 +167,36 @@ void KadenzeDelayChorusAudioProcessor::processBlock (juce::AudioBuffer<float>& b
     {
         auto* channelData = buffer.getWritePointer (channel);
 
-        // Process gain
-        mGain[channel]->process(channelData, 
-                                0.5, 
+        // Process input gain
+        mInputGain[channel]->process(channelData,
+                                getParameter(kParameter_InputGain), 
                                 channelData, 
                                 buffer.getNumSamples());
+        
 
-        // Turns the plugin into a chorus by disabling the LFO module on one channel
-        float rate = 0.25f;
-        if (channel == 0) {
-            rate = 0;
-        }
+        // Turns the plugin into a chorus by enabling the LFO module on only one channel
+        float rate = channel==0 ? getParameter(kParameter_ModulationRate): 0;
 
         // Process LFO
         mLfo[channel]->process(rate, 
-                               1, 
+                               getParameter(kParameter_ModulationDepth),
                                buffer.getNumSamples());
 
         // Process delay
         mDelay[channel]->process(channelData, 
-                                 0.25, 
-                                 0.5, 
-                                 1, 
+                                 getParameter(kParameter_DelayTime),
+                                 getParameter(kParameter_DelayFeedback),
+                                 getParameter(kParameter_DelayWetDry),
+                                 getParameter(kParameter_DelayType),
                                  mLfo[channel]->getBuffer(), 
                                  channelData,
                                  buffer.getNumSamples());
+
+        // Process output gain
+        mOutputGain[channel]->process(channelData,
+                                      getParameter(kParameter_OutputGain),
+                                      channelData,
+                                      buffer.getNumSamples());
     }
 }
 
@@ -220,10 +229,24 @@ void KadenzeDelayChorusAudioProcessor::initializeDSP()
 {
     // Initialize DSP modules for each channel
     for (int i = 0; i < 2; i++) {
-        mGain[i] = std::make_unique<KAPGain>();
+        mInputGain[i] = std::make_unique<KAPGain>();
+        mOutputGain[i] = std::make_unique<KAPGain>();
         mDelay[i] = std::make_unique<KAPDelay>();
         mLfo[i] = std::make_unique<KAPLfo>();
     }
+}
+
+juce::AudioProcessorValueTreeState::ParameterLayout KadenzeDelayChorusAudioProcessor::createParameterLayout()
+{
+    juce::AudioProcessorValueTreeState::ParameterLayout parameterLayout;
+    for (int i = 0; i < kParameter_TotalNumParameters; i++) {
+        parameterLayout.add(std::make_unique<juce::AudioParameterFloat>(
+            KAPParameterID[i],
+            KAPParameterID[i],
+            juce::NormalisableRange<float>(0.0f, 1.0f),
+            0.5f));
+    }
+    return parameterLayout;
 }
 
 //==============================================================================

@@ -11,6 +11,7 @@
 #pragma once
 
 #include "KAPPanelBase.h"
+#include "KAPParameterSlider.h"
 
 enum KAPFxPanelStyle
 {
@@ -20,7 +21,7 @@ enum KAPFxPanelStyle
 };
 
 class KAPFxPanel
-    : public KAPPanelBase
+    : public KAPPanelBase, public juce::ComboBox::Listener
 {
 public:
 
@@ -31,6 +32,10 @@ public:
 
     void setFxPanelStyle(KAPFxPanelStyle inStyle);
 
+    void comboBoxChanged(juce::ComboBox* comboBoxThatHasChanged);
+
 private:
     KAPFxPanelStyle mStyle;
+
+    juce::OwnedArray<KAPParameterSlider> mSliders;
 };

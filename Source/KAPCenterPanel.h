@@ -26,5 +26,5 @@ public:
 private:
 
     std::unique_ptr<KAPCenterPanelMenuBar> mMenuBar;
-    std::unique_ptr<KAPFxPanel> mFxPanel;
+    KAPFxPanel* mFxPanel;
 };

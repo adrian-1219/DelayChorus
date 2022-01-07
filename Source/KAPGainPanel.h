@@ -11,6 +11,7 @@
 #pragma once
 
 #include "KAPPanelBase.h"
+#include "KAPParameterSlider.h"
 
 class KAPGainPanel
     : public KAPPanelBase
@@ -20,6 +21,12 @@ public:
     KAPGainPanel(KadenzeDelayChorusAudioProcessor* inProcessor);
     ~KAPGainPanel();
 
+    void paint(juce::Graphics& g) override;
+
+    void setParameterID(int inParameterID);
+
 private:
+
+    KAPParameterSlider* mSlider;
 
 };

@@ -12,6 +12,12 @@
 
 #include "KAPAudioHelpers.h"
 
+enum KAPDelayType
+{
+    kKAPDelayType_Delay = 0,
+    kKAPDelayType_Chorus
+};
+
 class KAPDelay
 {
 public:
@@ -26,6 +32,7 @@ public:
                  float inTime,
                  float inFeedback,
                  float inWetDry,
+                 float inType,
                  float* inModulationBuffer,
                  float* outAudio,
                  int inNumSamplesToRender);
