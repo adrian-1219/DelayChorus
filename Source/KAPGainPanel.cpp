@@ -25,13 +25,13 @@ KAPGainPanel::~KAPGainPanel()
 void KAPGainPanel::paint(juce::Graphics& g) {
     KAPPanelBase::paint(g);
     if (mSlider) {
-        paintComponentLabel(g, mSlider);
+        paintComponentLabel(g, mSlider.get());
     }
 }
 
 void KAPGainPanel::setParameterID(int inParameterID)
 {
-    mSlider = new KAPParameterSlider(mProcessor->parameters, KAPParameterID[inParameterID]);
+    mSlider = std::make_unique<KAPParameterSlider>(mProcessor->parameters, KAPParameterID[inParameterID]);
     const int slider_size = 54;
     mSlider->setBounds(
         getWidth() * 0.5 - slider_size * 0.5, 

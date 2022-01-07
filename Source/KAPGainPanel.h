@@ -27,6 +27,6 @@ public:
 
 private:
 
-    KAPParameterSlider* mSlider;
+    std::unique_ptr <KAPParameterSlider> mSlider;
 
 };
