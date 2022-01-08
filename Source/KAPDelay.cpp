@@ -50,9 +50,12 @@ void KAPDelay::process(float* inAudio,
     const float wet = inWetDry;
     const float dry = 1.0f - wet;
 
-    // Map feedback value to be between 0 and 0.95
+    // Map feedback value to be between 0 and 1.2
     // We want the feedback to decay complete eventually
-    const float feedbackMapped = juce::jmap(inFeedback, 0.0f, 1.0f, 0.0f, 0.95f);
+    float feedbackMapped = 0;
+    if (inType == kKAPDelayType_Delay) {
+        feedbackMapped = juce::jmap(inFeedback, 0.0f, 1.0f, 0.0f, 1.2f);
+    }
 
     for (int i = 0; i < inNumSamplesToRender; i++) {
         if ((int)inType == kKAPDelayType_Delay) {
@@ -75,8 +78,8 @@ void KAPDelay::process(float* inAudio,
         // Calculate interpolated sample
         const double sample = getInterpolatedSample(delayTimeInSamples); 
 
-        // Add feedback to audio buffer
-        mBuffer[mDelayIndex] = inAudio[i] + (mFeedbackSample * feedbackMapped);
+        // Add feedback to audio buffer with soft clipper
+        mBuffer[mDelayIndex] = tanh_clip(inAudio[i] + (mFeedbackSample * feedbackMapped));
         mFeedbackSample = sample;
 
         // Write mixed signal to out audio buffer
