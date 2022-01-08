@@ -59,6 +59,11 @@ public:
 
     juce::AudioProcessorValueTreeState parameters;
 
+    KAPPresetManager* getPresetManager()
+    {
+        return mPresetManager.get();
+    }
+
 private:
 
     void initializeDSP();

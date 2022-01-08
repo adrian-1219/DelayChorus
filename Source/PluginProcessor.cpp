@@ -217,12 +217,25 @@ void KadenzeDelayChorusAudioProcessor::getStateInformation (juce::MemoryBlock& d
     // You should use this method to store your parameters in the memory block.
     // You could do that either as raw data, or use the XML or ValueTree classes
     // as intermediaries to make it easy to save and load complex data.
+    juce::XmlElement preset("KAP_StateInfo");
+    juce::XmlElement* presetBody = new juce::XmlElement("KAP_Preset");
+    mPresetManager->getXmlForPreset(presetBody);
+    preset.addChildElement(presetBody);
+    copyXmlToBinary(preset, destData);
 }
 
 void KadenzeDelayChorusAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
+    std::unique_ptr<juce::XmlElement> xmlState = getXmlFromBinary(data, sizeInBytes);
+    if (xmlState) {
+        forEachXmlChildElement(*xmlState, subChild) {
+            mPresetManager->loadPresetForXml(subChild);
+        }
+    } else {
+        jassertfalse;
+    }
 }
 
 void KadenzeDelayChorusAudioProcessor::initializeDSP()
@@ -244,7 +257,8 @@ juce::AudioProcessorValueTreeState::ParameterLayout KadenzeDelayChorusAudioProce
             KAPParameterID[i],
             KAPParameterID[i],
             juce::NormalisableRange<float>(0.0f, 1.0f),
-            0.5f));
+            0.5f,
+            KAPParameterLabel[i]));
     }
     return parameterLayout;
 }

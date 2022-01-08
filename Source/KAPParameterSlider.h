@@ -19,7 +19,8 @@ public:
 
     KAPParameterSlider(
         juce::AudioProcessorValueTreeState& stateToControl,
-        const juce::String& parameterID);
+        const juce::String& parameterID,
+        const juce::String& parameterLabel);
     ~KAPParameterSlider();
 
 private:

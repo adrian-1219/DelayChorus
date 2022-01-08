@@ -12,8 +12,9 @@
 
 KAPParameterSlider::KAPParameterSlider(
     juce::AudioProcessorValueTreeState& stateToControl,
-    const juce::String& parameterID) 
-    : juce::Slider(parameterID)
+    const juce::String& parameterID, 
+    const juce::String& parameterLabel)
+    : juce::Slider(parameterLabel)
 {
     setSliderStyle(SliderStyle::RotaryHorizontalVerticalDrag);
     setTextBoxStyle(Slider::TextEntryBoxPosition::NoTextBox, false, 0, 0);

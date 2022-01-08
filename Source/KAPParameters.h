@@ -25,11 +25,23 @@ enum KAPParameter
 
 static juce::String KAPParameterID[kParameter_TotalNumParameters] =
 {
-    "Input Gain",
+    "InputGain",
     "Time",
     "Feedback",
-    "Wet Dry",
+    "WetDry",
     "Type",
+    "OutputGain",
+    "ModulationRate",
+    "ModulationDepth"
+};
+
+static juce::String KAPParameterLabel[kParameter_TotalNumParameters] =
+{
+    "Input Gain",
+    "Delay Time",
+    "Delay Feedback",
+    "Delay Wet Dry",
+    "Delay Type",
     "Output Gain",
     "Modulation Rate",
     "Modulation Depth"
