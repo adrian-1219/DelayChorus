@@ -79,8 +79,8 @@
       <FILE id="WCFcWC" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
     </GROUP>
     <GROUP id="{DF5E96E3-6118-33D5-519E-B6D060B02DFA}" name="Assets">
-      <FILE id="gyQjTW" name="FreeSansBold.ttf" compile="0" resource="1"
-            file="../../../../AppData/Local/Temp/Rar$DRa10916.49046/FreeSansBold.ttf"/>
+      <FILE id="Z26OAP" name="FreeSansBold.ttf" compile="0" resource="1"
+            file="Assets/FreeSansBold.ttf"/>
       <FILE id="G65I4H" name="kadenze_bg.png" compile="0" resource="1" file="Assets/kadenze_bg.png"/>
       <FILE id="tgDhF1" name="kadenze_knob.png" compile="0" resource="1"
             file="Assets/kadenze_knob.png"/>
