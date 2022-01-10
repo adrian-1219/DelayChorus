@@ -1,8 +1,10 @@
-Builds/
+Builds/*
 !Builds/VisualStudio2019
-Builds/VisualStudio2019/
+Builds/VisualStudio2019/*
 !Builds/VisualStudio2019/x64
-Builds/VisualStudio2019/x64/
+Builds/VisualStudio2019/x64/*
 !Builds/VisualStudio2019/x64/Debug
-Builds/VisualStudio2019/x64/Debug/VST3/
+Builds/VisualStudio2019/x64/Debug/*
+!Builds/VisualStudio2019/x64/Debug/VST3
+Builds/VisualStudio2019/x64/Debug/VST3/*
 !Builds/VisualStudio2019/x64/Debug/VST3/KadenzeDelayChorus.vst3
