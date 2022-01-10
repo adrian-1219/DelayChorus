@@ -19,10 +19,10 @@ GUI panels for each section of the GUI. The KAPPanelBase class inherits from the
 - Fx panel contains all the parameter knobs for the selected effect
 
 ### Managers
-The only manager class currently is the KAPVuMeter class.
+The only manager class currently is the KAPPresetManager class.
 
 ### Parameter Control
-Custom parameter classes that inherits from the JUCE ComboBox and Slider classes.
+Custom parameter classes that inherit from the JUCE ComboBox and Slider classes.
 
 ### Helpers
 - EmbeddedFont - class that stores three instances of the custom font, each with a different size
@@ -36,4 +36,4 @@ Custom parameter classes that inherits from the JUCE ComboBox and Slider classes
 Stores assets used such as the font, background, and custom knob.
 
 ### Components
-Other components. Currently includes only the VuMeter class, used to display the signal level of the input and output gain.
+Other components. Currently includes only the KAPVuMeter class, used to display the signal level of the input and output gain.
