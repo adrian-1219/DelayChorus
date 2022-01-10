@@ -29,21 +29,27 @@ KAPFxPanel::~KAPFxPanel()
 void KAPFxPanel::paint(juce::Graphics& g)
 {
     KAPPanelBase::paint(g);
+    juce::String label;
 
     switch (mStyle)
     {
         case(kKAPFxPanelStyle_Delay): {
-            g.drawFittedText("DELAY", 0, 0, getWidth(), getHeight() * 0.75, juce::Justification::centred, 1);
+            label = "DELAY";
         }break;
         case(kKAPFxPanelStyle_Chorus): {
-            g.drawFittedText("CHORUS", 0, 0, getWidth(), getHeight() * 0.75, juce::Justification::centred, 1);
+            label = "CHORUS";
         }break;
-        default:
         case(kKAPFxPanelStyle_TotalNumStyles): {
             jassertfalse;
         }break;
-
     }
+
+    g.setColour(KAPColour_5);
+    g.setFont(embeddedFont->getFont(3));
+
+    g.drawFittedText(label, 0, 0, getWidth(), getHeight() * 0.45,
+        juce::Justification::centred, 1);
+
 
     for (int i = 0; i < mSliders.size(); i++) {
         paintComponentLabel(g, mSliders[i]);

@@ -38,11 +38,11 @@ static juce::String KAPParameterID[kParameter_TotalNumParameters] =
 static juce::String KAPParameterLabel[kParameter_TotalNumParameters] =
 {
     "Input Gain",
-    "Delay Time",
-    "Delay Feedback",
-    "Delay Wet Dry",
+    "Time",
+    "Feedback",
+    "Wet Dry",
     "Delay Type",
     "Output Gain",
-    "Modulation Rate",
-    "Modulation Depth"
+    "Rate",
+    "Depth"
 };

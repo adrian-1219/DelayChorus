@@ -44,12 +44,17 @@
       <FILE id="CNLGpS" name="KAPTopPanel.h" compile="0" resource="0" file="Source/KAPTopPanel.h"/>
     </GROUP>
     <GROUP id="{C06F8D64-2B11-8A19-540C-072ECA82D1EA}" name="Helpers">
+      <FILE id="HmNnV6" name="EmbeddedFont.cpp" compile="1" resource="0"
+            file="Source/EmbeddedFont.cpp"/>
+      <FILE id="fngc7u" name="EmbeddedFont.h" compile="0" resource="0" file="Source/EmbeddedFont.h"/>
       <FILE id="ClhzCF" name="KAPAudioHelpers.h" compile="0" resource="0"
             file="Source/KAPAudioHelpers.h"/>
       <FILE id="Bkefhn" name="KAPHelperFunctions.h" compile="0" resource="0"
             file="Source/KAPHelperFunctions.h"/>
       <FILE id="t29fnh" name="KAPInterfaceDefines.h" compile="0" resource="0"
             file="Source/KAPInterfaceDefines.h"/>
+      <FILE id="GkqHnU" name="KAPLookAndFeel.h" compile="0" resource="0"
+            file="Source/KAPLookAndFeel.h"/>
       <FILE id="S8aL3l" name="KAPParameters.h" compile="0" resource="0" file="Source/KAPParameters.h"/>
     </GROUP>
     <GROUP id="{6CBE25C6-A862-A0EC-6E38-A75AEAC90410}" name="DSP">
@@ -68,6 +73,13 @@
       <FILE id="xq9xHR" name="PluginEditor.cpp" compile="1" resource="0"
             file="Source/PluginEditor.cpp"/>
       <FILE id="WCFcWC" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+    </GROUP>
+    <GROUP id="{DF5E96E3-6118-33D5-519E-B6D060B02DFA}" name="Assets">
+      <FILE id="gyQjTW" name="FreeSansBold.ttf" compile="0" resource="1"
+            file="../../../../AppData/Local/Temp/Rar$DRa10916.49046/FreeSansBold.ttf"/>
+      <FILE id="G65I4H" name="kadenze_bg.png" compile="0" resource="1" file="Assets/kadenze_bg.png"/>
+      <FILE id="tgDhF1" name="kadenze_knob.png" compile="0" resource="1"
+            file="Assets/kadenze_knob.png"/>
     </GROUP>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>

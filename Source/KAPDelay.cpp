@@ -46,14 +46,14 @@ void KAPDelay::process(float* inAudio,
                        float* outAudio,
                        int inNumSamplesToRender)
 {
+
     // Calculate wet and dry values
     const float wet = inWetDry;
     const float dry = 1.0f - wet;
 
     // Map feedback value to be between 0 and 1.2
-    // We want the feedback to decay complete eventually
     float feedbackMapped = 0;
-    if (inType == kKAPDelayType_Delay) {
+    if ((int)inType == kKAPDelayType_Delay) {
         feedbackMapped = juce::jmap(inFeedback, 0.0f, 1.0f, 0.0f, 1.2f);
     }
 

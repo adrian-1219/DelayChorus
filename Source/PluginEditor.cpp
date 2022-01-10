@@ -9,6 +9,8 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
+
+
 //==============================================================================
 KadenzeDelayChorusAudioProcessorEditor::KadenzeDelayChorusAudioProcessorEditor (KadenzeDelayChorusAudioProcessor& p)
     : AudioProcessorEditor (&p), audioProcessor (p)
@@ -17,23 +19,30 @@ KadenzeDelayChorusAudioProcessorEditor::KadenzeDelayChorusAudioProcessorEditor (
     // editor's size to whatever you need it to be.
     setSize(MAIN_PANEL_WIDTH, MAIN_PANEL_HEIGHT);
 
+    mLookAndFeel = std::make_unique<KAPLookAndFeel>();
+    setLookAndFeel(mLookAndFeel.get());
+    juce::LookAndFeel::setDefaultLookAndFeel(mLookAndFeel.get());
+
     mMainPanel = std::make_unique<KAPMainPanel>(&audioProcessor);
     addAndMakeVisible(*mMainPanel);
+
+    mBackgroundImage = juce::ImageCache::getFromMemory(BinaryData::kadenze_bg_png,
+        BinaryData::kadenze_bg_pngSize);
+
 }
 
 KadenzeDelayChorusAudioProcessorEditor::~KadenzeDelayChorusAudioProcessorEditor()
 {
+    juce::LookAndFeel::setDefaultLookAndFeel(nullptr);
+    setLookAndFeel(nullptr);
+    mLookAndFeel.reset();
 }
 
 //==============================================================================
 void KadenzeDelayChorusAudioProcessorEditor::paint (juce::Graphics& g)
 {
-    // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
-
-    g.setColour (juce::Colours::white);
-    g.setFont (15.0f);
-    g.drawFittedText ("Hello World!", getLocalBounds(), juce::Justification::centred, 1);
+    // Draw custom background
+    g.drawImage(mBackgroundImage, getLocalBounds().toFloat());
 }
 
 void KadenzeDelayChorusAudioProcessorEditor::resized()
