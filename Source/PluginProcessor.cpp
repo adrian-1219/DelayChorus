@@ -168,33 +168,49 @@ void KadenzeDelayChorusAudioProcessor::processBlock (juce::AudioBuffer<float>& b
         auto* channelData = buffer.getWritePointer (channel);
 
         // Process input gain
+        float inputGain =
+            *parameters.getRawParameterValue(KAPParameterID[kParameter_InputGain]);
         mInputGain[channel]->process(channelData,
-                                getParameter(kParameter_InputGain), 
+                                inputGain,
                                 channelData, 
                                 buffer.getNumSamples());
         
 
         // Turns the plugin into a chorus by enabling the LFO module on only one channel
-        float rate = channel==0 ? getParameter(kParameter_ModulationRate): 0;
+        float modulationRate =
+            *parameters.getRawParameterValue(KAPParameterID[kParameter_ModulationRate]);
+        float rate = channel==0 ? modulationRate : 0;
 
         // Process LFO
+        float modulationDepth =
+            *parameters.getRawParameterValue(KAPParameterID[kParameter_ModulationDepth]);
         mLfo[channel]->process(rate, 
-                               getParameter(kParameter_ModulationDepth),
+                               modulationDepth,
                                buffer.getNumSamples());
 
         // Process delay
+        float delayTime =
+            *parameters.getRawParameterValue(KAPParameterID[kParameter_DelayTime]);
+        float delayFeedback =
+            *parameters.getRawParameterValue(KAPParameterID[kParameter_DelayFeedback]);
+        float delayWetDry =
+            *parameters.getRawParameterValue(KAPParameterID[kParameter_DelayWetDry]);
+        float delayType =
+            *parameters.getRawParameterValue(KAPParameterID[kParameter_DelayType]);
         mDelay[channel]->process(channelData, 
-                                 getParameter(kParameter_DelayTime),
-                                 getParameter(kParameter_DelayFeedback),
-                                 getParameter(kParameter_DelayWetDry),
-                                 getParameter(kParameter_DelayType),
+                                 delayTime,
+                                 delayFeedback,
+                                 delayWetDry,
+                                 delayType,
                                  mLfo[channel]->getBuffer(), 
                                  channelData,
                                  buffer.getNumSamples());
 
         // Process output gain
+        float outputGain =
+            *parameters.getRawParameterValue(KAPParameterID[kParameter_OutputGain]);
         mOutputGain[channel]->process(channelData,
-                                      getParameter(kParameter_OutputGain),
+                                      outputGain,
                                       channelData,
                                       buffer.getNumSamples());
     }

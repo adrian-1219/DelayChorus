@@ -21,23 +21,6 @@ KAPPanelBase::~KAPPanelBase()
     //setLookAndFeel(nullptr);
 }
 
-void KAPPanelBase::paint(juce::Graphics& g)
-{
-    /* Old UI implementation
-    g.setColour(juce::Colours::beige);
-    g.fillAll();
-
-    g.setColour(juce::Colours::black);
-    g.drawRoundedRectangle(0, 0, getWidth(), getHeight(), 4, 2);
-    */
-
-    if (isMouseOver()) {
-        // g.setColour(KAPColour_4);
-        // g.fillAll();
-    }
-
-}
-
 void KAPPanelBase::mouseEnter(const juce::MouseEvent& event)
 {
     repaint();
@@ -46,4 +29,18 @@ void KAPPanelBase::mouseEnter(const juce::MouseEvent& event)
 void KAPPanelBase::mouseExit(const juce::MouseEvent& event)
 {
     repaint();
+}
+
+void KAPPanelBase::paint(juce::Graphics& g)
+{
+
+    if (isMouseOver()) {
+        // Session 4 mouse hover assignment: 
+        /*const juce::Colour hoverColour = 
+            juce::Colour(juce::Colours::black).withAlpha(0.4f);
+
+        g.setColour(hoverColour);
+        g.fillAll();*/
+    }
+
 }
