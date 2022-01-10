@@ -238,6 +238,19 @@ void KadenzeDelayChorusAudioProcessor::setStateInformation (const void* data, in
     }
 }
 
+float KadenzeDelayChorusAudioProcessor::getInputGainMeterLevel(int inChannel)
+{
+    const float normalizeddB = 
+        dBToNormalizedGain(mInputGain[inChannel]->getMeterLevel());
+    return normalizeddB;
+}
+float KadenzeDelayChorusAudioProcessor::getOutputGainMeterLevel(int inChannel)
+{
+    const float normalizeddB =
+        dBToNormalizedGain(mOutputGain[inChannel]->getMeterLevel());
+    return normalizeddB;
+}
+
 void KadenzeDelayChorusAudioProcessor::initializeDSP()
 {
     // Initialize DSP modules for each channel

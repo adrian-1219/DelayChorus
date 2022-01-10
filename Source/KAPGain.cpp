@@ -9,9 +9,10 @@
 */
 
 #include "KAPGain.h"
-#include "JuceHeader.h"
+#include "KAPAudioHelpers.h"
 
 KAPGain::KAPGain() 
+    : mOutputSmoothed(0)
 {
 
 }
@@ -30,4 +31,12 @@ void KAPGain::process(float* inAudio, float inGain, float* outAudio, int inNumSa
     for (int i = 0; i < inNumSamplesToRender; i++) {
         outAudio[i] = inAudio[i] * gainMapped;
     }
+
+    float absValue = fabs(outAudio[0]);
+    mOutputSmoothed = kMeterSmoothingCoeff * (mOutputSmoothed - absValue) + absValue;
+}
+
+float KAPGain::getMeterLevel()
+{
+    return mOutputSmoothed;
 }

@@ -4,6 +4,10 @@
               useAppConfig="0" addUsingNamespaceToJuceHeader="0" displaySplashScreen="1"
               jucerFormatVersion="1">
   <MAINGROUP id="xMBhh3" name="KadenzeDelayChorus">
+    <GROUP id="{AC4D7A15-24F6-554C-7721-AC731D0F11B6}" name="Components">
+      <FILE id="dSkTCS" name="KAPVuMeter.cpp" compile="1" resource="0" file="Source/KAPVuMeter.cpp"/>
+      <FILE id="B8Vsue" name="KAPVuMeter.h" compile="0" resource="0" file="Source/KAPVuMeter.h"/>
+    </GROUP>
     <GROUP id="{120A2339-963B-86A2-1631-6C278BDB986C}" name="Managers">
       <FILE id="hAksdL" name="KAPPresetManager.cpp" compile="1" resource="0"
             file="Source/KAPPresetManager.cpp"/>
