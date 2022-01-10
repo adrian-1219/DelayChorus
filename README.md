@@ -4,6 +4,9 @@
 
 JUCE C++ delay and chorus plugin made for the Advanced Audio Plugin Development course offered by Output.
 
+## Installation
+Copy the VST3 file in builds to your standard VST3 folder then scan for it in your preferred DAW.
+
 ## Files
 
 Below are brief descriptions of each JUCE group and the files they contain.
