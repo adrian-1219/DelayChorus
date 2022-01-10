@@ -1,5 +1,10 @@
 # DelayChorus
+
+![KadenzeDelayChorus](https://user-images.githubusercontent.com/56320363/148717687-14b6fc4f-38c7-4d88-954f-605eb1a874d4.png)
+
 JUCE C++ delay and chorus plugin made for the Advanced Audio Plugin Development course offered by Output.
+
+## Files
 
 Below are brief descriptions of each JUCE group and the files they contain.
 
